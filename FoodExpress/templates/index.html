@@ -1,0 +1,199 @@
+<!doctype html>
+<html class="h-100" lang="en">
+<meta charset="UTF-8">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css"/>
+    <!-- Custom styles for this template -->
+
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
+<meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-lg">
+            <img class="avatar" src="../static/img/logo.svg"/>
+            <a class="navbar-brand" href="">FoodExpress</a>
+            <div class="collapse navbar-collapse justify-content-between navbar-nav mb-2 mb-lg-0" id="navbarSupportedContent">
+                <div class="search">
+                    <div class="row">
+                        <div class="search-2">
+                            <input type="text" placeholder="Find in FoodExpress">
+                            <button class="btn btn-outline-dark">Search</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="address address-text btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#myModal">Delivery address</button>
+                <div class='d-flex flex-row align-items-center gap-3'>
+                    <img class="avatar" src="../static/img/css_ava.svg"/>
+                    <div>
+                        <p class="mb-2">Nikita</p>
+                        <a href="">Settings</a>
+                        <a href="">Log out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-auto">
+    <div class="modal-800 modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title address-2" id="exampleModalLabel">Enter your address</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="map" class="map"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Begin page content -->
+<main class="flex-shrink-0 pt-3 pb-sm-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <h2>Questions</h2>
+                <div class="question mt-sm-3">
+
+                </div>
+                <div class="question">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="../static/img/css_ava.svg" alt="" class="question-image">
+                        </div>
+                        <div class="col-10">
+                            <div class="question-title"><a href="">Second question</a></div>
+                            <div class="question-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </div>
+                        </div>
+                        <div class = "g-4 d-flex">
+                            <div class="col-2">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="button">Like</button>
+                            </div>
+                            <div class="col-2 fs-5"><a href="">answer (3)</a></div>
+                            <div class="col-7 fs-5">Tags: <a href="">shishka</a> <a href="">aboba</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="row ">
+                        <div class="col-2">
+                            <img src="../static/img/css_ava.svg" alt="" class="question-image ">
+                        </div>
+                        <div class="col-10">
+                            <div class="question-title"><a href="">Third question</a></div>
+                            <div class="question-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </div>
+                        </div>
+                        <div class = "g-4 d-flex">
+                            <div class="col-2">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="button">Like</button>
+                            </div>
+                            <div class="col-2 fs-5"><a href="">answer (3)</a></div>
+                            <div class="col-7 fs-5">Tags: <a href="">shishka</a> <a href="">aboba</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <h2>Popular tags</h2>
+                    <div class='text-wrap d-flex gap-3 flex-wrap align-self-sm-auto w-75'>
+                      <div class='program-lang fw-bolder'>
+                          <a class="link-primary" href="">Java</a>
+                      </div>
+                      <div class='program-lang fw-bolder'>
+                        <a class="link-secondary" href="">.NET</a>
+                      </div>
+                      <div class='program-lang fw-bolder'>
+                        <a class="link-success" href="">PHP</a>
+                      </div>
+                      <div class='program-lang fw-bolder'>
+                        <a class="link-danger" href="">JavaScript</a>
+                      </div>
+                      <div class='program-lang fw-bolder'>
+                        <a class="link-warning" href="">C</a>
+                      </div>
+                      <div class='program-lang fw-bolder'>
+                        <a class="link-info" href="">C++</a>
+                      </div>
+                      <div class='program-lang fw-bolder'>
+                        <a class="link-primary" href="">Python</a>
+                      </div>
+                  </div>
+                    <h2>Best Members</h2>
+                    <ul class="list-group ms-sm-3 w-75">
+                        <li class="list-group-item"><a href="">Mr.Freeman</a></li>
+                        <li class="list-group-item"><a href="">A second item</a></li>
+                        <li class="list-group-item"><a href="">A third item</a></li>
+                        <li class="list-group-item"><a href="">A fourth item</a></li>
+                        <li class="list-group-item"><a href="">And a fifth item</a></li>
+                    </ul>
+                </div>
+            </div>
+            <nav aria-label="..." class="g-4">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a class="page-link">Previous</a>
+                </li>
+                <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+        </div>
+    </div>
+</main>
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=09341ae8-ec5a-458a-bcab-3587754feaac&lang=ru_RU">
+    </script>
+  <script src="../static/js/script.js"></script>
+
+</body>
+</html>

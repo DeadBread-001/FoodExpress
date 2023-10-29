@@ -1,4 +1,4 @@
-body {
+  body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -13,19 +13,7 @@ body {
     height: 50px;
     background-color: #eee;
   }
-  
-  main {
-    padding-bottom: 50px;
-  }
-  
-  footer {
-    position: absolute;
-    bottom: 0;
-    height: 50px;
-    width: 100%;
-    background-color: #ccc;
-  }
-  
+
   
   .navbar {
       background-color: #f8f9fa;
@@ -63,3 +51,83 @@ body {
       width: 60px;
       height: 60px;
   }
+
+  .question {
+    border: 1px solid grey;
+    margin-top: 30px;
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .question-image{
+      width: 100px;
+      height: 100px;
+  }
+
+  .question-title {
+    font-size: 20px;
+    font-family: Helvetica;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .question-image-primary {
+    width: 150px;
+    height: 150px;
+  }
+  .no-padding {
+   padding: 0;
+   margin: 0;
+  }
+.program-lang > a {
+ text-decoration: none;
+}
+
+
+.search-2 {
+    position: relative;
+    width: 100%
+}
+
+.search-2 input {
+    height: 45px;
+    width: 400px;
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+    border-color: black !important;
+    border-radius: 10px;
+    padding-left: 18px;
+    padding-right: 100px
+}
+
+.search-2 button {
+    position: absolute;
+    right: 12px;
+    height: 45px;
+    width: 90px;
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.address-text {
+    white-space: nowrap;
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 45px;
+}
+
+.map {
+    width: 930px;
+    height: 400px;
+}
+
+.modal-auto {
+    margin-right: 50% !important;
+}
+
+
+.modal-800 {
+    width: 965px !important;
+    height: 500px !important;
+}
