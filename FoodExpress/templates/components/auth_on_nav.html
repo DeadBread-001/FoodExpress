@@ -1,0 +1,12 @@
+{% load static %}
+
+<div class='dropdown d-flex flex-row align-items-center gap-3'>
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+            aria-expanded="false">
+        <img class="avatar" src="{% static '/img/css_ava.svg' %}" alt=""/>
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{% url 'settings' %}">Настройки</a></li>
+        <li><a class="dropdown-item" href="{% url 'logout' %}">Выйти</a></li>
+    </ul>
+</div>

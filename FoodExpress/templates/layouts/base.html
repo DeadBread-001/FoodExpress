@@ -1,0 +1,244 @@
+{% load static %}
+<html class="h-100" lang="en">
+<meta charset="UTF-8">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'  %}"/>
+    <script src="https://kit.fontawesome.com/b349a6ec10.js" crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+
+    <meta name="theme-color" content="#7952b3">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+
+</head>
+<body class="d-flex flex-column h-100">
+<nav class="navbar navbar-expand-lg" style="padding: 0">
+    <div class="container-lg">
+        <img class="logo" src="{% static '/img/logo.svg' %}"/>
+        <a class="navbar-brand" href="{% url 'index' %}">FoodExpress</a>
+        <div class="collapse navbar-collapse justify-content-between navbar-nav mb-2 mb-lg-0"
+             id="navbarSupportedContent">
+            <div class="one">
+                <form class="two">
+                    <div class="three mt-3">
+                            <span class="five" aria-hidden="true">
+                                <svg class="six" width="100%" height="100%" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M4 11c0-3.859 3.141-7 7-7s7 3.141 7 7-3.141 7-7 7-7-3.141-7-7zm18 11a1 1 0 000-1.414l-3.975-3.975A8.948 8.948 0 0020 11c0-4.963-4.037-9-9-9s-9 4.037-9 9 4.037 9 9 9a8.948 8.948 0 005.611-1.975L20.586 22A1 1 0 0022 22z">
+                                    </path>
+                                </svg>
+                            </span>
+                        <input id="search-input-id" class="four" type="search" aria-label="Поиск" autocomplete="off"
+                               placeholder="Поиск" value="">
+                    </div>
+                </form>
+            </div>
+            <button type="button" class="address address-text btn dark-text btn-outline-secondary mx-lg-3"
+                    data-bs-toggle="modal" data-bs-target="#myModal" style="border-radius: 16px !important;">
+                {% if user.is_authenticated %}
+                {{ request.user.profile.address}}
+                {% else %}
+                Введите адрес
+                {% endif %}
+
+            </button>
+            {% if user.is_authenticated %}
+            {% include 'components/auth_on_nav.html' %}
+            {% else %}
+            {% include 'components/signup_on_nav.html' %}
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade mt-5" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-auto">
+        <div class="modal-800 modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title address-2" id="exampleModalLabel">Enter your address</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="map" class="map"></div>
+                <button type="button" class="btn btn-primary" onclick="saveAddress()"
+                        style="background-color: #fce000; border-radius: 15px; color: black; border-color: transparent; height: 50px; width: 250px; margin-top: 30px;">
+                    Сохранить адрес
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Begin page content -->
+<main class="flex-shrink-0 pt-3 pb-sm-3 flex-grow-2">
+    <div class="container" style="margin-left: 50px !important; margin-right: 0 !important;">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=09341ae8-ec5a-458a-bcab-3587754feaac&lang=ru_RU">
+</script>
+<script src="{% static '/js/script.js' %}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    function saveAddress() {
+        var address = document.getElementById('exampleModalLabel').innerText;
+
+        var csrftoken = getCookie('csrftoken');
+
+        $.ajax({
+            type: 'POST',
+            url: '/update_profile_address/',
+            data: {'address': address},
+            beforeSend: function (xhr, settings) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken);
+            },
+            success: function (response) {
+                console.log('Адрес успешно сохранен');
+                $('#myModal').modal('hide');
+            },
+            error: function (error) {
+                console.error('Произошла ошибка при сохранении адреса');
+            }
+        });
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        updateTotalPrice();
+
+        $('.plus-btn').on('click', function () {
+            var productId = $(this).data('product-id');
+            updateQuantity(productId, 'increment');
+        });
+
+        $('.minus-btn').on('click', function () {
+            var productId = $(this).data('product-id');
+            updateQuantity(productId, 'decrement');
+        });
+
+        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+        $.ajaxSetup({
+            headers: {"X-CSRFToken": csrftoken},
+        });
+
+        function updateTotalPrice() {
+            $.ajax({
+                url: '/get_total_price/',
+                method: 'GET',
+                success: function (response) {
+                    $('#total-price').text(response.total_price + '₽');
+                },
+                error: function (error) {
+                    console.error('Error getting total price:', error);
+                }
+            });
+        }
+
+        function updateQuantity(productId, action) {
+            $.ajax({
+                url: '/update_quantity/',
+                method: 'POST',
+                data: {
+                    'product_id': productId,
+                    'action': action,
+                },
+                success: function (response) {
+                    var countElement = $(`[data-product-id=${productId}]`).siblings('.count');
+                    countElement.text(response.quantity);
+
+                    // If quantity becomes 0, remove the product row from the table
+                    if (response.quantity === 0) {
+                        $(`[data-product-id=${productId}]`).closest('tr').remove();
+                    }
+
+                    // Update the total price after updating quantity
+                    updateTotalPrice();
+                },
+                error: function (error) {
+                    console.error('Error updating quantity:', error);
+                }
+            });
+        }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.adtocart').on('click', function (e) {
+            e.preventDefault();
+
+            var productId = $(this).data('product-id');
+
+            var cartItem = null;
+
+            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+            $.ajaxSetup({
+                headers: {"X-CSRFToken": csrftoken},
+            });
+            $.ajax({
+                url: '/update_quantity/',
+                method: 'POST',
+                data: {
+                    'product_id': productId,
+                    'action': 'increment',
+                },
+                success: function (response) {
+                    if (response.success) {
+                        if (response.quantity !== undefined) {
+                            cartItem = {quantity: response.quantity};
+                            location.reload();
+                        }
+                    } else {
+                        alert('Failed to add item to the cart.');
+                    }
+                },
+                error: function (error) {
+                    console.error('Error adding item to the cart:', error);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

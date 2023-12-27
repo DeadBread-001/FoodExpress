@@ -1,0 +1,67 @@
+<div class="col-2 right">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="bold">Корзина</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <table class="table">
+                    <tbody>
+                    {% for item in cart %}
+                    <tr>
+                        <td>
+                            <img src="{{ item.product.image }}"
+                                 style="width: 90px !important;" class="rounded" alt="Product image">
+                        </td>
+                        <td>
+                            <span style="white-space: nowrap">{{ item.product.name }}</span>
+                            <p class="price" style="color: #fc5959">{{ item.product.price }}₽, {{ item.product.weight }}</p>
+                        </td>
+                        <td>
+                            <div style="border-radius: 10px; height: 32px; background-color: rgba(101,92,78,.1); width: 100%;">
+                                <i class="bi bi-plus"></i>
+                                <div style="border-radius: inherit; cursor: default; display: flex; height: inherit; position: relative;">
+                                    {% csrf_token %}
+                                    <button class="mybutton plus-btn" data-product-id="{{ item.product.id }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                                        </svg>
+                                    </button>
+                                    <span class="count" style="padding-left: 10px; padding-right: 10px">{{ item.quantity }}</span>
+                                    <button class="mybutton minus-btn" data-product-id="{{ item.product.id }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary"
+                            style="background-color: #fce000; border-radius: 15px; color: black; border-color: transparent; height: 50px; width: 250px">
+                        {% if user.is_authenticated %}
+                            Перейти в корзину <span id="total-price" style="font-weight: 700; margin-left: 15px;">{{ total_price }}₽</span>
+                        {% else %}
+                            Перейти в корзину <span style="font-weight: 700; margin-left: 15px;">0₽</span>
+                        {% endif %}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

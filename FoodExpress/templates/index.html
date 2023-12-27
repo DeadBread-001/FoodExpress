@@ -1,199 +1,256 @@
-<!doctype html>
-<html class="h-100" lang="en">
-<meta charset="UTF-8">
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../static/css/main.css"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css"/>
-    <!-- Custom styles for this template -->
+{% extends 'layouts/base.html' %}
 
-    <link href="sticky-footer-navbar.css" rel="stylesheet">
-<meta name="theme-color" content="#7952b3">
-
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-
-    <!-- Custom styles for this template -->
-    <link href="sticky-footer-navbar.css" rel="stylesheet">
-  </head>
-  <body class="d-flex flex-column h-100">
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-lg">
-            <img class="avatar" src="../static/img/logo.svg"/>
-            <a class="navbar-brand" href="">FoodExpress</a>
-            <div class="collapse navbar-collapse justify-content-between navbar-nav mb-2 mb-lg-0" id="navbarSupportedContent">
-                <div class="search">
-                    <div class="row">
-                        <div class="search-2">
-                            <input type="text" placeholder="Find in FoodExpress">
-                            <button class="btn btn-outline-dark">Search</button>
-                        </div>
-                    </div>
+{% block content %}
+{% include 'components/categories-left.html' %}
+<div class="col-9 main">
+    <h3 class="bold">Овощной прилавок</h3>
+    <div class="mt-sm-3">
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Самый сезон' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2756334/851694aea0674438a84ddbcb56cb48dd/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Самый сезон</div>
                 </div>
-                <button type="button" class="address address-text btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#myModal">Delivery address</button>
-                <div class='d-flex flex-row align-items-center gap-3'>
-                    <img class="avatar" src="../static/img/css_ava.svg"/>
-                    <div>
-                        <p class="mb-2">Nikita</p>
-                        <a href="">Settings</a>
-                        <a href="">Log out</a>
-                    </div>
-                </div>
-            </div>
+            </a>
         </div>
-    </nav>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-auto">
-    <div class="modal-800 modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title address-2" id="exampleModalLabel">Enter your address</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div id="map" class="map"></div>
-      </div>
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Овощи, грибы и зелень' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2805921/60bf165e315141eaa8e98a6b6f9efaed/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Овощи, грибы и зелень</div>
+                </div>
+            </a>
+        </div>
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Фрукты и ягоды' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2791769/06dea09f916a4027b65fdc9f565d1e80/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Фрукты и ягоды</div>
+                </div>
+            </a>
+        </div>
     </div>
-  </div>
+    <h3 class="bold">Молочный прилавок</h3>
+    <div class="mt-sm-3">
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Молоко, масло и яйца' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2791769/d9f21dd962f549999b474606da740736/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Молоко, масло и яйца</div>
+                </div>
+            </a>
+        </div>
+        <div class="min-container">
+            <a href="{% url 'categories' category_name='Сыры' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2791769/4bc7e61b2a20415c85f5ca6358bb3a3e/280x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Сыры</div>
+                </div>
+            </a>
+        </div>
+        <div class="min-container">
+            <a href="{% url 'categories' category_name='Кефир, сметана, творог' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2998515/fd4079d992a94565bd0cdb5018529821/280x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Кефир, сметана, творог</div>
+                </div>
+            </a>
+        </div>
+        <div class="min-container">
+            <a href="{% url 'categories' category_name='Йогурты и десерты' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2783132/1d57d7e70e504c0c89689d37f675309c/280x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Йогурты и десерты</div>
+                </div>
+            </a>
+        </div>
+        <div class="min-container">
+            <a href="{% url 'categories' category_name='Молочное для детей' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2750890/a410575109ae4d40aa79b83eaaa261e5/280x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Молочное для детей</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <h3 class="bold">Булочная</h3>
+    <div class="mt-sm-3">
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Хлеб' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2791769/f9f52780f8964135886e9d9c7d45a053/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Хлеб</div>
+                </div>
+            </a>
+        </div>
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Выпечка' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2791769/7663001bf3fa4794a595841e541f74c2/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Выпечка</div>
+                </div>
+            </a>
+        </div>
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Хлебцы' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2998515/98830eb076844d15b4a251acf6c8ab54/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Хлебцы</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <h3 class="bold">Вода и напитки</h3>
+    <div class="mt-sm-3">
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Вода' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2888787/12e5ddeeef7a4a63a0a472225e7d324c/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Вода</div>
+                </div>
+            </a>
+        </div>
+        <div class="min-container">
+            <a href="{% url 'categories' category_name='Соки и морсы' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2888787/56963bd6a6a345c894e550af07449e42/280x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Соки и морсы</div>
+                </div>
+            </a>
+        </div>
+        <div class="min-container">
+            <a href="{% url 'categories' category_name='Газировка и тоники' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2783132/9c0ad0fee3294bc9846602dc4e1b1f27/280x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Газировка и тоники</div>
+                </div>
+            </a>
+        </div>
+        <div class="min-container">
+            <a href="{% url 'categories' category_name='Холодный чай и кофе' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2805921/0298fa4a1cae405cbfaa67ad518ba330/280x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Холодный чай и кофе</div>
+                </div>
+            </a>
+        </div>
+        <div class="min-container">
+            <a href="{% url 'categories' category_name='Энергетики, пиво и вино' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2888787/be88f20f5a6240c09a921875aa2983e6/280x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Энергетики, пиво и вино</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <h3 class="bold">Мясо, птица, рыба</h3>
+    <div class="mt-sm-3">
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Мясо и птица' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2888787/09f351d9c6b149a093ffbd4829b84dc1/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Мясо и птица</div>
+                </div>
+            </a>
+        </div>
+        <div class="min-container">
+            <a href="{% url 'categories' category_name='Колбаса и сосиски' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2783132/6fdade490b6b4b18aa1ad4ca206d11e9/280x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Колбаса и сосиски</div>
+                </div>
+            </a>
+        </div>
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Рыба и морепродукты' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2888787/0e105bafe9cb40ef9b16ce5b186fd2a6/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Рыба и морепродукты</div>
+                </div>
+            </a>
+        </div>
+        <div class="min-container">
+            <a href="{% url 'categories' category_name='Закуски и паштеты' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2998515/272b93f588044a88a662e2a50b695ff8/280x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Закуски и паштеты</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <h3 class="bold">Заморозка</h3>
+    <div class="mt-sm-3">
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Пельмени и вареники' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2750890/01d99a2c75824f099f815ec92b3a6176/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Пельмени и вареники</div>
+                </div>
+            </a>
+        </div>
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Овощи и ягоды' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2791769/7d2f9fabd08746f9bc0c88da29f88349/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Овощи и ягоды</div>
+                </div>
+            </a>
+        </div>
+        <div class="normal-container">
+            <a href="{% url 'categories' category_name='Рыба и морепродукты' %}">
+                <div style="position: relative;">
+                    <img class="vegetable-image"
+                         src="https://yastatic.net/avatars/get-grocery-goods/2888787/8ef0021246e44028b1b28e66d63e0493/576x280-webp"
+                         alt="Vegetables, mushrooms, and greens">
+                    <div class="overlay-text">Рыба и морепродукты</div>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
-<!-- Begin page content -->
-<main class="flex-shrink-0 pt-3 pb-sm-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-8">
-                <h2>Questions</h2>
-                <div class="question mt-sm-3">
-
-                </div>
-                <div class="question">
-                    <div class="row">
-                        <div class="col-2">
-                            <img src="../static/img/css_ava.svg" alt="" class="question-image">
-                        </div>
-                        <div class="col-10">
-                            <div class="question-title"><a href="">Second question</a></div>
-                            <div class="question-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </div>
-                        </div>
-                        <div class = "g-4 d-flex">
-                            <div class="col-2">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="button">Like</button>
-                            </div>
-                            <div class="col-2 fs-5"><a href="">answer (3)</a></div>
-                            <div class="col-7 fs-5">Tags: <a href="">shishka</a> <a href="">aboba</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <div class="row ">
-                        <div class="col-2">
-                            <img src="../static/img/css_ava.svg" alt="" class="question-image ">
-                        </div>
-                        <div class="col-10">
-                            <div class="question-title"><a href="">Third question</a></div>
-                            <div class="question-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </div>
-                        </div>
-                        <div class = "g-4 d-flex">
-                            <div class="col-2">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="button">Like</button>
-                            </div>
-                            <div class="col-2 fs-5"><a href="">answer (3)</a></div>
-                            <div class="col-7 fs-5">Tags: <a href="">shishka</a> <a href="">aboba</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="row">
-                    <h2>Popular tags</h2>
-                    <div class='text-wrap d-flex gap-3 flex-wrap align-self-sm-auto w-75'>
-                      <div class='program-lang fw-bolder'>
-                          <a class="link-primary" href="">Java</a>
-                      </div>
-                      <div class='program-lang fw-bolder'>
-                        <a class="link-secondary" href="">.NET</a>
-                      </div>
-                      <div class='program-lang fw-bolder'>
-                        <a class="link-success" href="">PHP</a>
-                      </div>
-                      <div class='program-lang fw-bolder'>
-                        <a class="link-danger" href="">JavaScript</a>
-                      </div>
-                      <div class='program-lang fw-bolder'>
-                        <a class="link-warning" href="">C</a>
-                      </div>
-                      <div class='program-lang fw-bolder'>
-                        <a class="link-info" href="">C++</a>
-                      </div>
-                      <div class='program-lang fw-bolder'>
-                        <a class="link-primary" href="">Python</a>
-                      </div>
-                  </div>
-                    <h2>Best Members</h2>
-                    <ul class="list-group ms-sm-3 w-75">
-                        <li class="list-group-item"><a href="">Mr.Freeman</a></li>
-                        <li class="list-group-item"><a href="">A second item</a></li>
-                        <li class="list-group-item"><a href="">A third item</a></li>
-                        <li class="list-group-item"><a href="">A fourth item</a></li>
-                        <li class="list-group-item"><a href="">And a fifth item</a></li>
-                    </ul>
-                </div>
-            </div>
-            <nav aria-label="..." class="g-4">
-              <ul class="pagination">
-                <li class="page-item disabled">
-                  <a class="page-link">Previous</a>
-                </li>
-                <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
-            </nav>
-        </div>
-    </div>
-</main>
-
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
-    </div>
-</footer>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=09341ae8-ec5a-458a-bcab-3587754feaac&lang=ru_RU">
-    </script>
-  <script src="../static/js/script.js"></script>
-
-</body>
-</html>
+{% include 'components/shopping-cart.html' %}
+{% endblock %}

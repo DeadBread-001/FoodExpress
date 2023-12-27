@@ -1,0 +1,15 @@
+{% extends 'layouts/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<div class="col-9 main">
+    <h2>Settings: {{ user.username }}</h2>
+    <form action="" class="col-7 mt-sm-3" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form settings_form %}
+        <button class="btn btn-primary btn-block mb-3" type="submit">Save</button>
+    </form>
+</div>
+{% include 'components/categories-right.html' %}
+
+{% endblock %}
