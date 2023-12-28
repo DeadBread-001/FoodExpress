@@ -1,6 +1,7 @@
 from django.contrib import auth
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.postgres.search import SearchVector
 from django.forms import model_to_dict
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
@@ -56,6 +57,21 @@ def categories(request, category_name):
         return render(request, 'categories.html',
                       {'products': products, 'category': category_name, 'cart': []})
 
+
+def search(request):
+    query = request.GET.get('q', '')
+    products = Product.objects.annotate(search=SearchVector('name')).filter(search=query)
+    if request.user.is_authenticated:
+        user_carts = Cart.objects.filter(profile=request.user.profile)
+        product_list = []
+        for user_cart in user_carts:
+            cart_items = user_cart.items.all()
+            for cart_item in cart_items:
+                product_list.append(cart_item)
+        return render(request, 'categories.html', {'products': products, 'cart': product_list})
+    else:
+        return render(request, 'categories.html',
+                      {'products': products, 'cart': []})
 
 def log_in(request):
     if request.method == 'GET':

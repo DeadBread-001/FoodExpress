@@ -1,0 +1,42 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% include 'components/categories-left.html'%}
+<div class="col-9 main">
+    <h3 class="bold">Поиск</h3>
+    <div class="row product-list">
+        {% for product in products %}
+        <div class="col-md-4">
+            <section class="panel">
+                <a href="{% url 'product' product_name=product.name %}">
+                    <div class="pro-img-box">
+                        <img src="{{ product.image }}"
+                             alt=""/>
+                        {% csrf_token %}
+                        {% if user.is_authenticated %}
+                        <a href="" class="adtocart" data-product-id="{{ product.id }}">
+                            <i class="fa fa-shopping-cart"></i>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'login' %}" class="adtocart2" data-product-id="{{ product.id }}">
+                            <i class="fa fa-shopping-cart"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </a>
+                <div class="panel-body text-center">
+                    <h4>
+                        <a href="{% url 'product' product_name=product.name %}" style="text-decoration: none"
+                           class="pro-title">
+                            {{ product.name }}
+                        </a>
+                    </h4>
+                    <p class="price">{{product.price}}₽, {{product.weight}}</p>
+                </div>
+            </section>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% include 'components/shopping-cart.html'%}
+{% endblock %}

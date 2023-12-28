@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'foodexpress_app',
     'django_bootstrap5',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [

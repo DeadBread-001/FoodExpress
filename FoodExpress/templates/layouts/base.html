@@ -49,7 +49,7 @@
                                     </path>
                                 </svg>
                             </span>
-                        <input id="search-input-id" class="four" type="search" aria-label="Поиск" autocomplete="off"
+                        <input  id="search" class="four" type="search" aria-label="Поиск" autocomplete="off"
                                placeholder="Поиск" value="">
                     </div>
                 </form>
@@ -108,6 +108,20 @@
 <script src="{% static '/js/script.js' %}"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
+    $(document).ready(function () {
+        $('#search').keypress(function (e) {
+            if (e.which === 13) {
+                var query = $.trim($(this).val());
+                var domain = 'http://127.0.0.1:8000';
+                var url = domain + "/search/?q=" + encodeURIComponent(query);
+                window.location.href = url;
+                return false;
+            }
+        });
+    });
+</script>
+
+<script>
     function getCookie(name) {
         var cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -122,6 +136,7 @@
         }
         return cookieValue;
     }
+
     function saveAddress() {
         var address = document.getElementById('exampleModalLabel').innerText;
 
